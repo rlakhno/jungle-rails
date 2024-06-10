@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
 
   def show
+    @enhanced_cart = enhanced_cart
+    @cart_empty = @enhanced_cart.empty?
   end
 
   def add_item

@@ -4,6 +4,14 @@
     <h1>My Cart</h1>
   </header>
 
+  <% if @cart_empty %>
+    <div class="empty-cart-message">
+      <h2>Your Cart is Empty</h2>
+      <p>It looks like you haven't added anything to your cart yet.</p>
+      <p><a href="<%= root_path %>">Return to Home Page</a> and start shopping!</p>
+    </div>
+  <% else %>
+
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -48,5 +56,5 @@
       <% end %>
     </div>
   </div>
-
+<% end %>
 </section>
