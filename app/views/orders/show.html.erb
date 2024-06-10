@@ -1,3 +1,5 @@
+<!-- app/views/orders/show.html.erb -->
+
 <section class="orders-show">
 
   <header class="page-header">
@@ -6,6 +8,11 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <% @order.line_items.each do |line_item| %>
+      <%= render partial: 'line_item', locals: { line_item: line_item } %>
+    <% end %>
+    <p><strong>Final Amount:</strong> <%= humanized_money_with_symbol Money.new(@order.total_cents) %></p>
+    <p><strong>Email:</strong> <%= @order.email %></p>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
