@@ -5,12 +5,14 @@ class UsersController < ApplicationController
   end
 
   def create
+    puts 'Trying to create a new user !!!'
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path, notice: 'Account created successfully.'
     else
       render :new
+      puts @user.errors.full_messages
     end
   end
 
