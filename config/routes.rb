@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
+  get 'users/new'
+  get 'users/create'
   get '/about', to: 'about#index', as: 'about'
 
   root to: 'products#index'
@@ -12,6 +17,15 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:create, :show]
+
+
+   # User authentication routes
+   get 'signup', to: 'users#new', as: 'signup'
+   post 'signup', to: 'users#create'
+ 
+   get 'login', to: 'sessions#new', as: 'login'
+   post 'login', to: 'sessions#create'
+   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   namespace :admin do
     get 'categories/index'

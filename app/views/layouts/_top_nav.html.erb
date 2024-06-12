@@ -48,6 +48,20 @@
           <li class="nav-item">
           <%= link_to 'About Us', about_path, class: "nav-link" %>
         </li>
+
+         <% if session[:user_id] %>
+          <li class="nav-item">
+            <%= link_to 'Log Out', logout_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Log In', login_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign Up', signup_path, class: "nav-link" %>
+          </li>
+        <% end %>
+
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle text-danger"
